@@ -12,7 +12,7 @@ RUN apt-get update && \
   wget http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz && \
   tar xzf nginx-${NGINX_VERSION}.tar.gz && \
   cd nginx-${NGINX_VERSION} && \
-  ./configure --with-http_ssl_module --with-http_gzip_static_module --with-http_realip_module --sbin-path=/usr/local/sbin --conf-path=/etc/nginx/nginx.conf --http-log-path=/var/log/nginx/ && \
+  ./configure --with-http_ssl_module --with-http_gzip_static_module --with-http_realip_module --sbin-path=/usr/local/sbin --conf-path=/etc/nginx/nginx.conf --http-log-path=/var/log/nginx/access.log --error-log-path=/var/log/nginx/error.log && \
   make && \
   make install && \
   cd .. && \
