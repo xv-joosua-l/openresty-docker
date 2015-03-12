@@ -12,7 +12,7 @@ RUN apt-get update && \
   wget http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz && \
   tar xzf nginx-${NGINX_VERSION}.tar.gz && \
   cd nginx-${NGINX_VERSION} && \
-  ./configure --with-http_ssl_module --with-http_gzip_static_module --with-http_realip_module --sbin-path=/usr/local/sbin --conf-path=/etc/nginx/conf.d && \
+  ./configure --with-http_ssl_module --with-http_gzip_static_module --with-http_realip_module --sbin-path=/usr/local/sbin --conf-path=/etc/nginx/conf.d/ --http-log-path=/var/log/nginx/ && \
   make && \
   make install && \
   cd .. && \
@@ -23,8 +23,8 @@ RUN apt-get update && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/*
 
-RUN ln -sf /dev/stdout /usr/local/nginx/logs/access.log && \
-  ln -sf /dev/stderr /usr/local/nginx/logs/error.log
+RUN ln -sf /dev/stdout /var/log/nginx/logs/access.log && \
+  ln -sf /dev/stderr /var/log/nginx/logs/error.log
 
 EXPOSE 80 443
 
