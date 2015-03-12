@@ -16,6 +16,7 @@ RUN apt-get update && \
   make && \
   make install && \
   cd .. && \
+  mkdir -p /etc/nginx/conf.d && \
   rm -rf nginx-${NGINX_VERSION}* && \
   apt-get remove -y wget binutils bsdmainutils build-essential bzip2 cpp cpp-4.7 debhelper dpkg-dev file g++ g++-4.7 gcc gcc-4.7 gettext gettext-base groff-base html2text intltool-debian libasprintf0c2 libc-dev-bin libc6-dev libclass-isa-perl libcroco3 libdpkg-perl libffi5 libgdbm3 libgettextpo0 libglib2.0-0 libgmp-dev libgomp1 libitm1 libmagic1 libmpc2 libmpfr4 libpcre3 libpcre3-dev libpcrecpp0 libpipeline1 libquadmath0 libssl-dev libssl1.0.0 libswitch-perl libtimedate-perl libunistring0 libxml2 linux-libc-dev make man-db patch perl perl-modules po-debconf zlib1g-dev && \
   apt-get install -y zlib1g openssl libpcre3 ca-certificates && \
