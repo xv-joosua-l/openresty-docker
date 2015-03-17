@@ -1,5 +1,6 @@
 FROM debian:wheezy
 
+COPY nginx_signing.key /nginx_signing.key
 RUN apt-key add nginx_signing.key
 RUN echo "deb http://nginx.org/packages/mainline/debian/ wheezy nginx" >> /etc/apt/sources.list
 RUN echo "deb-src http://nginx.org/packages/mainline/debian/ wheezy nginx" >> /etc/apt/sources.list
