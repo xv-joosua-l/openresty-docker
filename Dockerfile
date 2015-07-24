@@ -1,6 +1,6 @@
-FROM debian:wheezy
+FROM debian:jessie
 
-ENV NGINX_VERSION 1.7.10.1
+ENV NGINX_VERSION 1.7.10.2
 
 RUN apt-get update && \
   apt-get install -y wget libreadline-dev libncurses5-dev libpcre3-dev libssl-dev perl make build-essential && \
@@ -20,6 +20,8 @@ RUN apt-get update && \
   rm -rf /var/lib/apt/lists/*
 
 RUN ln -s /usr/local/openresty/nginx/sbin/nginx /usr/local/sbin/nginx
+
+VOLUME ["/var/cache/nginx"]
 
 EXPOSE 80 443
 
