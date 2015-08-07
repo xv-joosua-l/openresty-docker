@@ -1,29 +1,24 @@
-FROM debian:jessie
+FROM alpine:latest
 
 ENV NGINX_VERSION 1.7.10.2
 ENV LUAROCKS_VERSION 2.2.2
+ENV OPENRESTY_PREFIX /opt/openresty
+ENV PATH $OPENRESTY_PREFIX/bin:$OPENRESTY_PREFIX/luajit/bin:$PATH
 
 WORKDIR /app
 
 ADD install_openresty.sh /install_openresty.sh
 ADD install_lapis.sh /install_lapis.sh
 
-RUN apt-get update && \
-  apt-get upgrade -y && \
-  apt-get install -y wget unzip libreadline-dev libncurses5-dev libpcre3-dev libssl-dev perl make build-essential && \
+RUN apk --update add build-base openssl-dev pcre-dev zlib-dev perl wget unzip && \
 
-  bash /install_openresty.sh && \
-  bash /install_lapis.sh && \
+  sh /install_openresty.sh && \
+  sh /install_lapis.sh && \
 
   # cleanup
-  apt-get remove -y wget unzip libreadline-dev libncurses5-dev libpcre3-dev libssl-dev perl make build-essential && \
-  apt-get install -y zlib1g openssl ca-certificates libpcre3 perl-modules && \
-  apt-get autoremove -y && \
-  apt-get clean && \
-  rm -rf /var/lib/apt/lists/* && \
+  apk del build-base perl unzip wget openssl-dev openssl-doc zlib-dev && \
+  rm -rf /var/cache/apk/* && \
   rm /install_openresty.sh /install_lapis.sh
-
-RUN ln -s /usr/local/openresty/nginx/sbin/nginx /usr/local/sbin/nginx
 
 VOLUME ["/var/cache/nginx"]
 
