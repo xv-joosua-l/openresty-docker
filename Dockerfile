@@ -12,13 +12,14 @@ WORKDIR /app
 ADD install_openresty.sh /install_openresty.sh
 ADD install_lapis.sh /install_lapis.sh
 
-RUN apk --update add build-base openssl-dev pcre pcre-dev zlib-dev perl wget unzip libgcc && \
+RUN apk --update add build-base openssl-dev pcre pcre-dev zlib-dev perl wget unzip libgcc \
+  musl-utils libssl1.0 libcrypto1.0 zlib alpine-baselayout && \
 
   sh /install_openresty.sh && \
   sh /install_lapis.sh && \
 
   # cleanup
-  apk del build-base perl unzip wget openssl-dev openssl-doc zlib-dev pcre-dev && \
+  apk del build-base perl unzip wget openssl-dev openssl-doc zlib-dev pcre-dev alpine-base apk-tools && \
   rm -rf /var/cache/apk/* /install_openresty.sh /install_lapis.sh
 
 # forward request and error logs to docker log collector
