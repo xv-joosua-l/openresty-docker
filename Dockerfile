@@ -20,7 +20,8 @@ RUN apk --update add build-base openssl-dev pcre pcre-dev zlib-dev perl wget unz
 
   # cleanup
   apk del build-base perl unzip wget openssl-dev openssl-doc zlib-dev pcre-dev alpine-base apk-tools && \
-  rm -rf /var/cache/apk/* /install_openresty.sh /install_lapis.sh
+  rm -rf /var/cache/apk/* /install_openresty.sh /install_lapis.sh \
+    $OPENRESTY_PREFIX/luajit/lib/libluajit-5.1.a
 
 # forward request and error logs to docker log collector
 RUN ln -sf /dev/stdout /var/log/nginx/access.log
