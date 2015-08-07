@@ -3,14 +3,12 @@ wget http://openresty.org/download/ngx_openresty-${NGINX_VERSION}.tar.gz && \
   cd ngx_openresty-${NGINX_VERSION}/ && \
   ./configure -j4 \
     --prefix=$OPENRESTY_PREFIX \
-
     --sbin-path=/sbin/nginx \
     --conf-path=/etc/nginx/nginx.conf \
     --error-log-path=/var/log/nginx/error.log \
     --http-log-path=/var/log/nginx/access.log \
     --lock-path=/var/run/nginx.lock \
     --pid-path=/var/run/nginx.pid \
-
     --without-http_fastcgi_module \
     --without-http_scgi_module \
     --without-http_uwsgi_module \

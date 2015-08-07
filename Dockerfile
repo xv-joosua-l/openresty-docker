@@ -1,5 +1,7 @@
 FROM alpine:latest
 
+MAINTAINER saksmlz@gmail.com
+
 ENV NGINX_VERSION 1.7.10.2
 ENV LUAROCKS_VERSION 2.2.2
 ENV OPENRESTY_PREFIX /opt/openresty
@@ -17,8 +19,11 @@ RUN apk --update add build-base openssl-dev pcre-dev zlib-dev perl wget unzip &&
 
   # cleanup
   apk del build-base perl unzip wget openssl-dev openssl-doc zlib-dev && \
-  rm -rf /var/cache/apk/* && \
-  rm /install_openresty.sh /install_lapis.sh
+  rm -rf /var/cache/apk/* /install_openresty.sh /install_lapis.sh
+
+# forward request and error logs to docker log collector
+RUN ln -sf /dev/stdout /var/log/nginx/access.log
+RUN ln -sf /dev/stderr /var/log/nginx/error.log
 
 VOLUME ["/var/cache/nginx"]
 
