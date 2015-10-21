@@ -13,7 +13,7 @@ ADD install_openresty.sh /install_openresty.sh
 ADD install_lapis.sh /install_lapis.sh
 
 RUN apk --update add build-base openssl-dev pcre pcre-dev zlib-dev perl wget unzip libgcc \
-  musl-utils libssl1.0 libcrypto1.0 zlib alpine-baselayout libstdc++ libc6-compat-1.1.11-r2 && \
+  musl-utils libssl1.0 libcrypto1.0 zlib alpine-baselayout libstdc++ libc6-compat && \
 
   sh /install_openresty.sh && \
   sh /install_lapis.sh && \
