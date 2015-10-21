@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM debian:stable
 
 MAINTAINER saksmlz@gmail.com
 
@@ -12,16 +12,20 @@ WORKDIR /app
 ADD install_openresty.sh /install_openresty.sh
 ADD install_lapis.sh /install_lapis.sh
 
-RUN apk --update add build-base openssl-dev pcre pcre-dev zlib-dev perl wget unzip libgcc \
-  musl-utils libssl1.0 libcrypto1.0 zlib alpine-baselayout libstdc++ libc6-compat curl && \
+RUN apt-get update \
+  && apt-get upgrade -y \
+  && apt-get install -y build-essential libssl-dev libpcre3-dev zlib1g-dev perl unzip libgcc1 libstdc++6 libcurl3 curl wget libc6-dev \
+  && sh /install_openresty.sh \
+  && sh /install_lapis.sh \
+  && apt-get purge -y --auto-remove build-essential libssl-dev libpcre3-dev zlib1g-dev curl wget \
+    binutils bzip2 cpp cpp-4.9 dpkg-dev fakeroot g++ g++-4.9 gcc gcc-4.9 libalgorithm-diff-perl \
+    libalgorithm-diff-xs-perl libalgorithm-merge-perl libasan1 libatomic1 libcilkrts5 libcloog-isl4 \
+    libdpkg-perl libfakeroot libfile-fcntllock-perl libgcc-4.9-dev libgomp1 libicu52 libisl10 libitm1 \
+    liblsan0 libmpc3 libmpfr4 libpcrecpp0 libpsl0 libquadmath0 libssl-doc libstdc++-4.9-dev
+    libtimedate-perl libtsan0 libubsan0 make patch xz-utils \
+  && rm -rf /var/lib/apt/lists/* /install_openresty.sh /install_lapis.sh
+# echo 'Yes, do as I say!' | apt-get purge -y --force-yes manpages manpages-dev krb5-locales perl systemd
 
-  sh /install_openresty.sh && \
-  sh /install_lapis.sh && \
-
-  # cleanup
-  apk del build-base perl unzip wget openssl-dev openssl-doc zlib-dev pcre-dev alpine-base apk-tools && \
-  rm -rf /var/cache/apk/* /install_openresty.sh /install_lapis.sh \
-    $OPENRESTY_PREFIX/luajit/lib/libluajit-5.1.a
 
 # forward request and error logs to docker log collector
 RUN ln -sf /dev/stdout /var/log/nginx/access.log
