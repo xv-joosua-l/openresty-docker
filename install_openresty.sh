@@ -1,6 +1,6 @@
-wget http://openresty.org/download/ngx_openresty-${OPENRESTY_VERSION}.tar.gz && \
-  tar xzvf ngx_openresty-${OPENRESTY_VERSION}.tar.gz && \
-  cd ngx_openresty-${OPENRESTY_VERSION}/ && \
+wget https://openresty.org/download/openresty-${OPENRESTY_VERSION}.tar.gz && \
+  tar xzvf openresty-${OPENRESTY_VERSION}.tar.gz && \
+  cd openresty-${OPENRESTY_VERSION}/ && \
   ./configure -j4 \
     --prefix=$OPENRESTY_PREFIX \
     --sbin-path=/sbin/nginx \
@@ -25,4 +25,4 @@ wget http://openresty.org/download/ngx_openresty-${OPENRESTY_VERSION}.tar.gz && 
   mkdir -p /etc/nginx/ && \
   make install && \
   cd .. && \
-  rm -rf ngx_openresty-${OPENRESTY_VERSION}*
+  rm -rf openresty-${OPENRESTY_VERSION}*
