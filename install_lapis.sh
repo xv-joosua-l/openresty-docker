@@ -11,4 +11,6 @@ wget http://luarocks.org/releases/luarocks-${LUAROCKS_VERSION}.tar.gz && \
   cd .. && \
   rm -r ./luarocks-${LUAROCKS_VERSION}* && \
   /opt/openresty/luajit/bin/luarocks install lapis && \
+  /opt/openresty/luajit/bin/luarocks install resty-newrelic && \
+  /opt/openresty/luajit/bin/luarocks install lua-resty-http && \
   /opt/openresty/luajit/bin/luarocks install busted
