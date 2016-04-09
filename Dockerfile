@@ -17,11 +17,11 @@ ADD install_newrelic_sdk.sh /install_newrelic_sdk.sh
 RUN apt-get update \
   && apt-get upgrade -y \
   && apt-get install -y build-essential libssl-dev libpcre3-dev zlib1g-dev perl unzip libgcc1 \
-    libstdc++6 libcurl3 curl wget libc6-dev \
+    libstdc++6 libcurl3 curl wget libc6-dev git \
   && sh /install_openresty.sh \
   && sh /install_lapis.sh \
   && sh /install_newrelic_sdk.sh \
-  && apt-get purge -y --auto-remove build-essential libssl-dev libpcre3-dev zlib1g-dev curl wget \
+  && apt-get purge -y --auto-remove build-essential libssl-dev libpcre3-dev zlib1g-dev curl wget git \
   && echo 'Yes, do as I say!' | apt-get purge --yes --force-yes --auto-remove perl perl-modules \
     manpages manpages-dev krb5-locales zip unzip linux-libc-dev libc6-dev \
   && rm -rf /var/lib/apt/lists/* /install_openresty.sh /install_lapis.sh /install_newrelic_sdk.sh
