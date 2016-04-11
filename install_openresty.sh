@@ -9,6 +9,8 @@ wget https://openresty.org/download/openresty-${OPENRESTY_VERSION}.tar.gz && \
     --http-log-path=/var/log/nginx/access.log \
     --lock-path=/var/run/nginx.lock \
     --pid-path=/var/run/nginx.pid \
+    --user=nginx \
+    --group=nginx \
     --http-client-body-temp-path=$NGX_CACHE_DIR/client_temp \
     --http-proxy-temp-path=$NGX_CACHE_DIR/proxy_temp \
     --http-fastcgi-temp-path=$NGX_CACHE_DIR/fastcgi_temp \
