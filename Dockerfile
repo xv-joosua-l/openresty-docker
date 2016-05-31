@@ -20,7 +20,7 @@ RUN set -x \
   && apt-get purge -y --auto-remove wget ca-certificates \
   && rm -rf /var/lib/apt/lists/*
 
-ENV OPENRESTY_VERSION 1.9.7.4
+ENV OPENRESTY_VERSION 1.9.15.1rc2
 ENV LUAROCKS_VERSION 2.3.0
 ENV NR_SDK_VERSION 0.16.2.0-beta
 ENV OPENRESTY_PREFIX /opt/openresty
