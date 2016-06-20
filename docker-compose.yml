@@ -1,0 +1,6 @@
+nginx:
+  build: "./"
+  volumes:
+    - "./ngx_conf/nginx.conf:/etc/nginx/nginx.conf"
+  ports:
+    - "80:80"
