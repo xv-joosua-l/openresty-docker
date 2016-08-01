@@ -22,6 +22,7 @@ wget https://openresty.org/download/openresty-${OPENRESTY_VERSION}.tar.gz && \
     --without-mail_pop3_module \
     --without-mail_imap_module \
     --without-mail_smtp_module \
+    --with-http_v2_module \
     && \
   make -j4 && \
   mkdir -p /etc/nginx/ && \
