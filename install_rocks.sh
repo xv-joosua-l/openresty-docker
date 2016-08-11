@@ -21,4 +21,4 @@ set -ex \
   && luarocks install net-url \
   && luarocks install inspect \
   && luarocks install busted \
-  && luarocks remove --force lua-cjson # remove it in favour of lua-cjson fork
+  && ln -sf /opt/openresty/lualib/cjson.so `find /opt/openresty/luajit/lib/ -name cjson.so`
