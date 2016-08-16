@@ -21,4 +21,5 @@ set -ex \
   && luarocks install net-url \
   && luarocks install inspect \
   && luarocks install busted \
+  && luarocks install lua-resty-jwt \
   && ln -sf /opt/openresty/lualib/cjson.so `find /opt/openresty/luajit/lib/ -name cjson.so`
