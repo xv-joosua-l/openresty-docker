@@ -56,14 +56,7 @@ RUN set -ex \
       && apt-get purge --yes --auto-remove \
         build-essential \
         iproute \
-        libgssapi-krb5-2 \
-        libidn11 \
-        libk5crypto3 \
-        libkeyutils1 \
-        libkrb5-3 \
-        libkrb5support0 \
         libpcre3-dev \
-        libssh2-1 \
         libssl-dev \
         rename \
         wget \
@@ -71,7 +64,6 @@ RUN set -ex \
       && echo 'Yes, do as I say!' | apt-get purge --yes --force-yes --auto-remove \
         manpages \
         manpages-dev \
-        krb5-locales \
         linux-libc-dev \
         libc6-dev \
       && rm -rf \
