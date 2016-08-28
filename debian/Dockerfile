@@ -75,6 +75,9 @@ RUN set -ex \
         linux-libc-dev \
         libc6-dev \
       && rm -rf \
+        /opt/openresty/luajit/bin/luajit* \
+        /opt/openresty/luajit/lib/libluajit-5.1.a \
+        /opt/openresty/pod/ \
         /var/lib/apt/lists/* \
         /install_openresty.sh \
         /install_luarocks.sh
