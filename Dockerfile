@@ -37,6 +37,7 @@ RUN set -ex \
       && apt-get update \
       && apt-get upgrade --yes \
       && apt-get install --yes \
+        ca-certificates \
         build-essential \
         curl \
         git \
@@ -56,8 +57,17 @@ RUN set -ex \
         build-essential \
         curl \
         git \
+        iproute \
+        libgssapi-krb5-2 \
+        libidn11 \
+        libk5crypto3 \
+        libkeyutils1 \
+        libkrb5-3 \
+        libkrb5support0 \
         libpcre3-dev \
+        libssh2-1 \
         libssl-dev \
+        rename \
         wget \
         zlib1g-dev \
       && echo 'Yes, do as I say!' | apt-get purge --yes --force-yes --auto-remove \
