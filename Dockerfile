@@ -23,17 +23,15 @@ RUN set -x \
 WORKDIR /app
 
 ENV \
-  OPENRESTY_VERSION=1.9.15.1 \
+  OPENRESTY_VERSION=1.11.2.1 \
   LUAROCKS_VERSION=2.3.0 \
-  NR_SDK_VERSION=0.16.2.0-beta \
   OPENRESTY_PREFIX=/opt/openresty \
   NGX_CACHE_DIR=/var/cache/nginx
 
 ENV PATH=$OPENRESTY_PREFIX/bin:$OPENRESTY_PREFIX/luajit/bin:$PATH
 
 ADD install_openresty.sh /install_openresty.sh
-ADD install_rocks.sh /install_rocks.sh
-ADD install_newrelic_sdk.sh /install_newrelic_sdk.sh
+ADD install_luarocks.sh /install_luarocks.sh
 
 RUN set -ex \
       && apt-get update \
@@ -53,8 +51,7 @@ RUN set -ex \
         wget \
         zlib1g-dev \
       && /install_openresty.sh \
-      && /install_rocks.sh \
-      && sh /install_newrelic_sdk.sh \
+      && /install_luarocks.sh \
       && apt-get purge --yes --auto-remove \
         build-essential \
         curl \
@@ -73,8 +70,7 @@ RUN set -ex \
       && rm -rf \
         /var/lib/apt/lists/* \
         /install_openresty.sh \
-        /install_rocks.sh \
-        /install_newrelic_sdk.sh
+        /install_luarocks.sh
 
 ADD docker-entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
