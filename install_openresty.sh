@@ -40,4 +40,7 @@ set -ex \
   && echo "require 'busted.runner'({ standalone = false })" >> /usr/local/bin/resty-busted \
   && chmod +x /usr/local/bin/resty-busted \
   && cd .. \
+  && rm /opt/openresty/luajit/bin/luajit* \
+  && rm /opt/openresty/luajit/lib/libluajit-5.1.a \
+  && rm -r /opt/openresty/pod/ \
   && rm -rf openresty-${OPENRESTY_VERSION}*

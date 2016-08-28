@@ -47,7 +47,6 @@ RUN set -ex \
         libpcre3-dev \
         libssl-dev \
         libstdc++6 \
-        perl \
         unzip \
         wget \
         zlib1g-dev \
