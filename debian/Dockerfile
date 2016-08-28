@@ -37,8 +37,8 @@ RUN set -ex \
       && apt-get update \
       && apt-get upgrade --yes \
       && apt-get install --yes \
-        ca-certificates \
         build-essential \
+        ca-certificates \
         curl \
         git \
         libc6-dev \
@@ -47,6 +47,7 @@ RUN set -ex \
         libpcre3-dev \
         libssl-dev \
         libstdc++6 \
+        perl \
         unzip \
         wget \
         zlib1g-dev \
@@ -54,8 +55,6 @@ RUN set -ex \
       && /install_luarocks.sh \
       && apt-get purge --yes --auto-remove \
         build-essential \
-        curl \
-        git \
         iproute \
         libgssapi-krb5-2 \
         libidn11 \
@@ -73,7 +72,6 @@ RUN set -ex \
         manpages \
         manpages-dev \
         krb5-locales \
-        unzip \
         linux-libc-dev \
         libc6-dev \
       && rm -rf \
