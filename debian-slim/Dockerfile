@@ -9,7 +9,7 @@ WORKDIR /app
 
 ENV \
   OPENRESTY_VERSION=1.11.2.1 \
-  LUAROCKS_VERSION=2.3.0 \
+  LUAROCKS_VERSION=2.4.0 \
   OPENRESTY_PREFIX=/opt/openresty \
   NGX_CACHE_DIR=/var/cache/nginx
 
