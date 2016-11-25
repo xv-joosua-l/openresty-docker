@@ -10,5 +10,5 @@ wget http://luarocks.org/releases/luarocks-${LUAROCKS_VERSION}.tar.gz && \
   make install && \
   cd .. && \
   rm -r ./luarocks-${LUAROCKS_VERSION}* && \
-  /opt/openresty/luajit/bin/luarocks install lapis && \
+  /opt/openresty/luajit/bin/luarocks install lapis 1.3.1-1 && \
   /opt/openresty/luajit/bin/luarocks install busted
