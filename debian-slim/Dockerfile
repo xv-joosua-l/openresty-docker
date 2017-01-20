@@ -23,8 +23,8 @@ RUN set -x \
 WORKDIR /app
 
 ENV \
-  OPENRESTY_VERSION=1.11.2.1 \
-  LUAROCKS_VERSION=2.3.0 \
+  OPENRESTY_VERSION=1.11.2.2 \
+  LUAROCKS_VERSION=2.4.2 \
   OPENRESTY_PREFIX=/opt/openresty \
   NGX_CACHE_DIR=/var/cache/nginx
 
