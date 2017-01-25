@@ -36,6 +36,7 @@ set -ex \
     --without-mail_pop3_module \
     --without-mail_imap_module \
     --without-mail_smtp_module \
+    --with-http_realip_module \
     --add-module=/opt/ngx_http_geoip2_module-2.0 \
   && make -j8 \
   && make install \
