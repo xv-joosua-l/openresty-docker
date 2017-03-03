@@ -30,6 +30,7 @@ set -ex \
     --http-fastcgi-temp-path=${NGX_CACHE_DIR}/fastcgi_temp \
     --http-uwsgi-temp-path=${NGX_CACHE_DIR}/uwsgi_temp \
     --http-scgi-temp-path=${NGX_CACHE_DIR}/scgi_temp \
+    --with-http_stub_status_module \
     --without-http_fastcgi_module \
     --without-http_scgi_module \
     --without-http_uwsgi_module \
