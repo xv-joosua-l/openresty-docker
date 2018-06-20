@@ -8,8 +8,8 @@ RUN groupadd -r nginx && useradd -r -g nginx nginx
 WORKDIR /app
 
 ENV \
-  OPENRESTY_VERSION=1.11.2.2 \
-  LUAROCKS_VERSION=2.4.2 \
+  OPENRESTY_VERSION=1.13.6.2 \
+  LUAROCKS_VERSION=2.4.4 \
   OPENRESTY_PREFIX=/opt/openresty \
   NGX_CACHE_DIR=/var/cache/nginx
 
