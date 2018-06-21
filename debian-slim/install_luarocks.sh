@@ -5,10 +5,10 @@ set -ex \
   && tar xzvf luarocks-${LUAROCKS_VERSION}.tar.gz \
   && cd luarocks-${LUAROCKS_VERSION} \
   && ./configure \
-    --prefix=${OPENRESTY_PREFIX}/luajit/ \
-    --with-lua=${OPENRESTY_PREFIX}/luajit/ \
-    --lua-suffix=jit-2.1.0-beta2 \
-    --with-lua-include=${OPENRESTY_PREFIX}/luajit/include/luajit-2.1/ \
+    --prefix=${OPENRESTY_PREFIX}/luajit \
+    --with-lua-bin=${OPENRESTY_PREFIX}/luajit/bin \
+    --lua-suffix=jit-2.1.0-beta3 \
+    --with-lua-include=${OPENRESTY_PREFIX}/luajit/include/luajit-2.1 \
   && make build \
   && make install \
   && cd .. \
