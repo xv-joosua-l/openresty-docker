@@ -13,6 +13,12 @@ set -ex \
   && curl -L https://github.com/leev/ngx_http_geoip2_module/archive/2.0.tar.gz | tar -xzv -C /opt \
 
 set -ex \
+  && cd /usr/local/src \
+  && git clone https://github.com/openssl/openssl.git \
+  && cd openssl \
+  && git checkout ${OPENSSL_VERSION}
+
+set -ex \
   && curl -L https://openresty.org/download/openresty-${OPENRESTY_VERSION}.tar.gz | tar -xzv -C /opt \
   && cd /opt/openresty-${OPENRESTY_VERSION}/ \
   && ./configure -j8 \
@@ -30,6 +36,7 @@ set -ex \
     --http-fastcgi-temp-path=${NGX_CACHE_DIR}/fastcgi_temp \
     --http-uwsgi-temp-path=${NGX_CACHE_DIR}/uwsgi_temp \
     --http-scgi-temp-path=${NGX_CACHE_DIR}/scgi_temp \
+    --with-openssl=/usr/local/src/openssl \
     --with-http_stub_status_module \
     --without-http_fastcgi_module \
     --without-http_scgi_module \
@@ -53,5 +60,6 @@ set -ex \
   && echo "#!/usr/bin/env resty" > /usr/local/bin/resty-busted \
   && echo "require 'busted.runner'({ standalone = false })" >> /usr/local/bin/resty-busted \
   && chmod +x /usr/local/bin/resty-busted \
+  && rm -rf /usr/local/src/openssl \
   && rm -rf /opt/openresty-${OPENRESTY_VERSION}/ \
   && rm -rf /opt/ngx_http_geoip2_module-2.0/
